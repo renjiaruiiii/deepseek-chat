@@ -1,3 +1,4 @@
+import '../css/MessageList.css';
 import { useChatContext } from '../context/ChatContext';
 import { useEffect, useRef } from 'react';
 export const MessageList = () => {
@@ -11,15 +12,14 @@ export const MessageList = () => {
         }   //这确保了每当有新消息时，消息列表会自动滚动到最新消息的位置
     }, [messages]);
     return (
-        <div ref={listRef} style={{ height: '600px', overflowY: 'auto', border: '1px solid #ccc' }}>
-            {/* 渲染历史消息 */}
+        <div className="message-list" ref={listRef}>
             {messages.map((msg, idx) => (
-                <div key={idx}>
-                    <p>{msg.role === 'user' ? '你' : 'DeepSeek'}：{msg.content}</p>
+                <div key={idx} className={`message ${msg.role}`}>
+                    <p>{msg.role === 'user' ? '我' : 'DeepSeek'}：{msg.content}</p>
                 </div>
             ))}
-            {/* 打字动效 */}
-            {isTyping && <div>DeepSeek 正在输入...</div>}
+
+            {isTyping && <div className="typing">DeepSeek 正在输入...</div>}
         </div>
     );
 };

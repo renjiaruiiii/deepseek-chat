@@ -1,3 +1,4 @@
+import '../css/HistorySidebar.css'; // 路径从 ./ 改为 ../css/，适配 css 文件夹层级
 import { useChatContext } from '../context/ChatContext';
 import { useState, useEffect } from 'react';
 export const HistorySidebar = () => {
@@ -30,22 +31,18 @@ export const HistorySidebar = () => {
         localStorage.removeItem(`chat_${id}`);
     };
     return (
-        <div style={{ width: '200px', border: '1px solid #ccc', padding: '10px' }}>
+        <div className="history-sidebar">
             <h3>历史会话</h3>
-            <button onClick={handleNewChat}>新建会话</button>
-            <ul style={{ listStyle: 'none', padding: 0 }}>
+            <button className="new-chat" onClick={handleNewChat}>新建会话</button>
+            <ul>
                 {chats.map(chat => (
                     <li
                         key={chat.id}
                         onClick={() => switchChat(chat.id)}
-                        style={{
-                            padding: '8px',
-                            cursor: 'pointer',
-                            backgroundColor: currentChatId === chat.id ? '#eee' : 'transparent'
-                        }}
+                        className={currentChatId === chat.id ? 'active' : ''}
                     >
                         {chat.name}
-                        <button onClick={(e) => handleDeleteChat(chat.id, e)}>×</button>
+                        <button className="delete" onClick={(e) => handleDeleteChat(chat.id, e)}>×</button>
                     </li>
                 ))}
             </ul>

@@ -1,0 +1,67 @@
+.history-sidebar {
+    width: 240px;
+    /* 用固定px替代百分比，避免适配偏差 */
+    border-right: 1px solid #e5e7eb;
+    padding: 16px;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.history-sidebar h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-weight: 600;
+    font-family: "Microsoft YaHei", Arial, sans-serif;
+}
+
+.history-sidebar button.new-chat {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+    margin-bottom: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: "Microsoft YaHei", Arial, sans-serif;
+}
+
+.history-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.history-sidebar li {
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    font-family: "Microsoft YaHei", Arial, sans-serif;
+}
+
+.history-sidebar li:hover,
+.history-sidebar li.active {
+    background-color: #e6effe;
+}
+
+.history-sidebar li button.delete {
+    background-color: transparent;
+    color: #6b7280;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    font-family: "Microsoft YaHei", Arial, sans-serif;
+}
+
+.history-sidebar li button.delete:hover {
+    color: #ef4444;
+}
