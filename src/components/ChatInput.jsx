@@ -19,18 +19,18 @@ export const ChatInput = () => {
         // 这里可以添加简单的录音逻辑（如需复杂逻辑再考虑抽离）
     };
     return (
-        <div className="chat-input">
+        <form className="chat-input" onSubmit={handleSubmit}>
             <input
                 type="text"
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
                 placeholder="输入消息..."
             />
-            <button className="send" type="submit" onClick={handleSubmit}>发送</button>
+            <button className="send" type="submit" >发送</button>
             <button className="voice" type="button" onClick={toggleRecording}>
                 <FaMicrophone />
                 {isRecording ? '停止录制' : '语音输入'}
             </button>
-        </div>
+        </form>
     );
 };
