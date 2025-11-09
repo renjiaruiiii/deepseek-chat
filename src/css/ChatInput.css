@@ -25,6 +25,9 @@
 }
 
 .chat-input button {
+    height: 40px;
+    flex-shrink: 0;
+    box-sizing: border-box;
     padding: 10px 18px;
     border-radius: 20px;
     cursor: pointer;
