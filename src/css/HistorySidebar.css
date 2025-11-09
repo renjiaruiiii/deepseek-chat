@@ -1,15 +1,25 @@
 .history-sidebar {
-    width: 240px;
+    width: 25%;
     /* 用固定px替代百分比，避免适配偏差 */
     border-right: 1px solid #e5e7eb;
-    padding: 16px;
+    padding-right: 16px;
     box-sizing: border-box;
     background-color: white;
+    writing-mode: horizontal-tb;
+    /* 水平显示 */
+    position: relative;
+    top: 0;
+    height: 768px;
+    /* 去掉左边框 */
 }
 
 .history-sidebar h3 {
-    font-size: 18px;
-    margin-top: 0;
+    width: 100%;
+    height: 28px;
+    position: absolute;
+    text-align: center;
+    font-size: 21px;
+    margin-top: 10px;
     margin-bottom: 16px;
     font-weight: 600;
     font-family: "Microsoft YaHei", Arial, sans-serif;
@@ -23,19 +33,28 @@
     padding: 8px 12px;
     cursor: pointer;
     margin-bottom: 16px;
+    margin-left: -5px;
     font-size: 14px;
     font-weight: 500;
     font-family: "Microsoft YaHei", Arial, sans-serif;
+    width: 100%;
+    position: absolute;
+    top: 45px;
+    z-index: 10;
 }
 
 .history-sidebar ul {
+    width: 100%;
+    position: absolute;
     list-style: none;
     padding: 0;
-    margin: 0;
+    top: 100px;
+    margin-left: -5px;
 }
 
 .history-sidebar li {
-    padding: 10px;
+    width: 98%;
+    padding: 18px 0 18px 9px;
     border-radius: 8px;
     cursor: pointer;
     margin-bottom: 8px;

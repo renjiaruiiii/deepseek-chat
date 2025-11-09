@@ -5,7 +5,7 @@
     border-top: 1px solid #e5e7eb;
     position: fixed;
     bottom: 0;
-    left: 240px;
+    width: 73%;
     /* 与侧边栏宽度240px对应，替代百分比 */
     right: 0;
     height: 80px;
