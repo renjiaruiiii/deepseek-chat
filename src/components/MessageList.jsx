@@ -1,7 +1,7 @@
 import '../css/MessageList.css';
 import { useChatContext } from '../context/ChatContext';
 import { useEffect, useRef } from 'react';
-export const MessageList = () => {
+export default function MessageList() {
     const { messages, isTyping } = useChatContext();//获取messages（消息数组）和isTyping（表示对方是否正在输入的状态）
     //1.使用useRef创建一个引用listRef，用于后续操作DOM元素
     const listRef = useRef(null);

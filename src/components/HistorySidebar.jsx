@@ -1,7 +1,7 @@
 import '../css/HistorySidebar.css'; // 路径从 ./ 改为 ../css/，适配 css 文件夹层级
 import { useChatContext } from '../context/ChatContext';
 import { useState, useEffect } from 'react';
-export const HistorySidebar = () => {
+export default function HistorySidebar() {
     const { currentChatId, switchChat } = useChatContext();//从ChatContext中获取当前会话ID(currentChatId)和切换会话的方法(switchChat)
     // 从本地存储获取历史会话
     const [chats, setChats] = useState(() => {

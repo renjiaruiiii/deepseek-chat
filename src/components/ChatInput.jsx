@@ -4,7 +4,7 @@ import { useChatContext } from '../context/ChatContext';
 import { useState } from 'react';
 import { VoiceRecorder } from './VoiceRecorder';
 //输入文本
-export const ChatInput = () => {
+export default function ChatInput() {
     const { sendMessage, sendVoiceMessage, isRecording, setIsRecording } = useChatContext();//从上下文中获取聊天相关的状态和函数
     const [inputText, setInputText] = useState('');//用于存储用户输入的文本消息
     // 1.文本发送
