@@ -1,0 +1,35 @@
+html {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+/* 1. 电脑大屏（≥1920px，放大基准字体，适配高清屏） */
+@media (min-width: 1920px) {
+    html {
+        font-size: 18px;
+    }
+}
+
+/* 2. 电脑常规屏（1080px~1920px，默认基准字体） */
+@media (min-width: 1080px) and (max-width: 1920px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/* 3. 平板横屏（768px~1024px，缩小基准字体） */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    html {
+        font-size: 15px;
+    }
+}
+
+/* 5. 手机（360px~930px，适配手机横屏） */
+@media (min-width:360px) and (max-width:930px) {
+
+    html {
+        font-size: 12px;
+    }
+}

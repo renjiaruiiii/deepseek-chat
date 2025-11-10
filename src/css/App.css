@@ -1,6 +1,8 @@
+@import "./Media.css";
+
 .app {
     display: flex;
-    height: 768px;
+    height: 48rem;
     /* 用固定px替代vh，适配多数屏幕 */
     max-width: 100%;
     margin: 0;
