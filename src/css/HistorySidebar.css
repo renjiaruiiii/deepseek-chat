@@ -1,18 +1,16 @@
 @import "./Media.css";
 
 .history-sidebar {
+    height: 100%;
     width: 25%;
-    /* 用固定px替代百分比，避免适配偏差 */
     border-right: 1px solid #e5e7eb;
     padding-right: 1rem;
     box-sizing: border-box;
-    background-color: white;
+    /* 文本水平排列 */
     writing-mode: horizontal-tb;
-    /* 水平显示 */
     position: relative;
     top: 0;
-    height: 48rem;
-    /* 去掉左边框 */
+
 }
 
 .history-sidebar h3 {
@@ -28,21 +26,19 @@
 }
 
 .history-sidebar button.new-chat {
+    width: 100%;
     background-color: #2563eb;
     color: white;
     border: none;
-    border-radius: 0.5rem;
+    border-radius: 0.3rem;
     padding: 0.5rem 0.75rem;
     cursor: pointer;
     margin-bottom: 1rem;
-    margin-left: -0.3125rem;
     font-size: 0.875rem;
     font-weight: 500;
     font-family: "Microsoft YaHei", Arial, sans-serif;
-    width: 100%;
     position: absolute;
-    top: 2.8125rem;
-    z-index: 10;
+    top: 3rem;
 }
 
 .history-sidebar ul {
@@ -51,15 +47,13 @@
     list-style: none;
     padding: 0;
     top: 6.25rem;
-    margin-left: -0.3125rem;
 }
 
 .history-sidebar li {
-    width: 98%;
     padding: 1.125rem 0 1.125rem 0.5625rem;
-    border-radius: 0.5rem;
+    border-radius: 0.3rem;
     cursor: pointer;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;

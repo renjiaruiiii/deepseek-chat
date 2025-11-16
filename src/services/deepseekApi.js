@@ -1,11 +1,11 @@
-// DeepSeek API 封装：对接真实接口
-export const fetchDeepseekResponse = async (message, chatId) => {
+// 封装deepseek api：接口
+export const fetchDeepseekResponse = async (message) => {
     try {
         const response = await fetch('https://metahk.zenymes.com/v1/chat/completions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer sk-84i3AD6d32BrfqCO0F9NLN6kaO1ye1hU5gttw0k4xJUeCIvi' // 替换为你的 API 密钥
+                'Authorization': 'Bearer sk-84i3AD6d32BrfqCO0F9NLN6kaO1ye1hU5gttw0k4xJUeCIvi' // API 密钥
             },
             body: JSON.stringify({
                 model: 'gemini-2.0-flash-001',

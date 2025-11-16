@@ -1,18 +1,19 @@
 @import "./Media.css";
 
+
 .app {
     display: flex;
+    /* 768px */
     height: 48rem;
-    /* 用固定px替代vh，适配多数屏幕 */
     max-width: 100%;
     margin: 0;
     padding: 0;
     font-family: "Microsoft YaHei", Arial, sans-serif;
-    /* 简化字体，优先常用中文字体 */
 }
 
 .chat-area {
     display: flex;
     flex-direction: column;
     width: 73%;
+    height: 100%;
 }

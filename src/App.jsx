@@ -1,10 +1,11 @@
-import React, { Suspense } from 'react'; // 引入 Suspense（按需加载必备）
-import './css/App.css'; // 路径从 ./ 改为 ./css/，适配 css 文件夹层级
+import React, { Suspense } from 'react';
+import './css/App.css';
 
+/*  React.lazy+suspense的组件按需加载 */
 const HistorySidebar = React.lazy(() => import('./components/HistorySidebar'));
 const MessageList = React.lazy(() => import('./components/MessageList'));
 const ChatInput = React.lazy(() => import('./components/ChatInput'));
-// 主组件：仅串联侧边栏、聊天区，不写样式
+// 主骨架页面结构
 function App() {
   return (
     <div className="app">

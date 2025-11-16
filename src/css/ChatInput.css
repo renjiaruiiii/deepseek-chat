@@ -2,16 +2,15 @@
 
 .chat-input {
     display: flex;
+    /*  容器内子元素的间距 */
     gap: 0.5rem;
     padding: 0.625rem 1rem;
     border-top: 1px solid #e5e7eb;
     position: fixed;
     bottom: 0;
-    width: 73%;
-    /* 与侧边栏宽度240px对应，替代百分比 */
     right: 0;
+    width: 75%;
     height: 5rem;
-    /* 固定输入区高度，匹配消息列表预留空间 */
     background-color: white;
     box-sizing: border-box;
     align-items: center;
@@ -28,7 +27,6 @@
 
 .chat-input button {
     height: 2.5rem;
-    flex-shrink: 0;
     box-sizing: border-box;
     padding: 0.625rem 1.125rem;
     border-radius: 1.25rem;
@@ -44,14 +42,7 @@
     border: none;
 }
 
-.chat-input button.voice {
-    background-color: #e5e7eb;
-    color: #4b5563;
-    border: none;
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-}
+
 
 .chat-input button.voice svg {
     width: 1rem;
