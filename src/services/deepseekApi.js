@@ -8,7 +8,7 @@ export const fetchDeepseekResponse = async (message) => {
                 'Authorization': 'Bearer sk-84i3AD6d32BrfqCO0F9NLN6kaO1ye1hU5gttw0k4xJUeCIvi' // API 密钥
             },
             body: JSON.stringify({
-                model: 'gemini-2.0-flash-001',
+                model: 'deepseek-ai/DeepSeek-R1',
                 messages: [{ role: 'user', content: message }],
                 stream: false
             })
