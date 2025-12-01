@@ -4,38 +4,41 @@ import { fetchDeepseekResponse } from '../services/deepseekApi';
 const ChatContext = createContext();
 /* 2.功能更新 */
 export const ChatProvider = ({ children }) => {
-    // 1. 全局数据状态
-    const [messages, setMessages] = useState([]);
-    const [currentChatId, setCurrentChatId] = useState('default');
-    const [isRecording, setIsRecording] = useState(false);
-    const [isTyping, setIsTyping] = useState(false);
-    // 2. 消息发送（对接 DeepSeek API）
+    // 1.封装全局数据状态
+    const [messages, setMessages] = useState([]);// 对话消息列表
+    const [currentChatId, setCurrentChatId] = useState('default'); // 当前会话ID
+    const [isRecording, setIsRecording] = useState(false);// 语音录制状态
+    const [isTyping, setIsTyping] = useState(false);// 机器人打字动效
+    // 2. 消息发送（对接 DeepSeek API）（1.发送文本信息2.信息加入列表 3.调用API机器人进行回复 4.回复信息加入列表）
     const sendMessage = async (text) => {//async声明异步函数
-        if (!text.trim()) return;
+        if (!text.trim()) return;//如果文本为空，则返回，不执行后续操作
         const userMsg = { role: 'user', content: text, time: Date.now() };
-        setMessages(prev => [...prev, userMsg]);
+        //返回一个新的数组，包含了prev中的所有元素，userMsg作为最后一个元素。[...prev, userMsg]：这里使用了ES6的扩展运算符
+        setMessages(prev => [...prev, userMsg]);//将用户输入的文本加入消息列表
         setIsTyping(true);
+        // 调用 DeepSeek API进行回复
+        // （1.try包含主要逻辑 2.catch处理错误情况 3.finally确保无论成功与否都会执行清理操作）
         try {
-            const response = await fetchDeepseekResponse(text, currentChatId);
-            const botMsg = { role: 'assistant', content: response.reply, time: Date.now() };
+            const response = await fetchDeepseekResponse(text, currentChatId);//await等待fetchDeepseekResponse函数完成，
+            const botMsg = { role: 'assistant', content: response.reply, time: Date.now() };//收到的ai回复结果
             setMessages(prev => [...prev, botMsg])
         } catch (error) {
             const errorMsg = { role: 'assistant', content: '请求失败，请重试', time: Date.now() };
-            setMessages(prev => [...prev, errorMsg]);
+            setMessages(prev => [...prev, errorMsg]);//机器人回答不了，报错
         } finally {
-            setIsTyping(false);
+            setIsTyping(false);//使用setIsTyping函数控制"正在输入"状态
         }
     };
-    // 3. 语音消息（web speech api）
+    // 3. 语音消息（web speech api）（1.语音转文字 2.调用sendmessage处理文本信息）
     const sendVoiceMessage = async (text) => {
         if (text.trim()) sendMessage(text);
     };
     // 4. 会话切换
     const switchChat = (chatId) => {
-        setCurrentChatId(chatId);
-        const storedMessages = localStorage.getItem(`chat_${chatId}`);
+        setCurrentChatId(chatId);//更新当前活动聊天ID
+        const storedMessages = localStorage.getItem(`chat_${chatId}`);// 从本地存储加载历史消息
         if (storedMessages) {
-            setMessages(JSON.parse(storedMessages));
+            setMessages(JSON.parse(storedMessages));// 如果存在历史消息，则将其解析为JSON对象并更新状态
         } else {
             setMessages([]);
         }
@@ -57,5 +60,5 @@ export const ChatProvider = ({ children }) => {
     };
     return <ChatContext.Provider value={value}>{children}</ChatContext.Provider>;
 };
-/* 3.其他组件调用数据状态 */
+/* 3.其他组件调用以上数据状态 */
 export const useChatContext = () => useContext(ChatContext);

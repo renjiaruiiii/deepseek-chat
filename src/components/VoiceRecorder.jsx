@@ -10,9 +10,9 @@ export const VoiceRecorder = () => {
 
     //2.初始化语音识别
     useEffect(() => {
-        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-        if (SpeechRecognition) { //如果支持，创建识别实例并配置相关属性
-            recognitionRef.current = new SpeechRecognition();
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;// 代码首先检查浏览器是否支持语音识别 API
+        if (SpeechRecognition) { //如果支持，创建SpeechRecognition实例并配置相关属性
+            recognitionRef.current = new SpeechRecognition();//创建一个 SpeechRecognition 实例
             recognitionRef.current.continuous = false;  //只识别一次
             recognitionRef.current.interimResults = false; // 只返回最终识别结果
             recognitionRef.current.lang = 'zh-CN'; //识别成中文
@@ -24,7 +24,7 @@ export const VoiceRecorder = () => {
     //3.切换语音状态，控制开始和停止
     const toggleRecording = () => {
         const recognition = recognitionRef.current;//获取语音识别实例
-        if (!recognition) return;
+        if (!recognition) return;//如果没有获取到语音识别实例，则直接返回
 
         if (isRecording) {
             // 停止识别
@@ -36,8 +36,8 @@ export const VoiceRecorder = () => {
             let resultText = '';
 
             // 监听识别结果
-            recognition.onresult = (event) => {
-                resultText = event.results[0][0].transcript; // 识别到的文本
+            recognition.onresult = (event) => {//监听识别结果，将识别到的文本保存到 resultText
+                resultText = event.results[0][0].transcript; //event.results[0][0].transcript 是识别到的文本
             };
 
             // 识别结束后发送信息
@@ -48,7 +48,7 @@ export const VoiceRecorder = () => {
                 }
             };
 
-            // 处理识别错误
+            // 处理识别过程中可能出现的错误
             recognition.onerror = (error) => {
                 console.error('语音识别错误：', error);
                 setIsRecording(false);
